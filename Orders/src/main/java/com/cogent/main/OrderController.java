@@ -25,9 +25,9 @@ public class OrderController
 	}
 
 	@PostMapping("/{userId}")
-	public String placeOrder(@PathVariable int userId)
+	public void placeOrder(@PathVariable int userId)
 	{
-		return orderService.createOrder(userId);
+		orderService.createOrder(userId);
 	}
 
 

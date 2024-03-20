@@ -24,4 +24,5 @@ public class ProductEntity
 	private String description;
 	private double price;
 	private String category;
+	private String imageUrl;
 }

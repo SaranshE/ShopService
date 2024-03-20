@@ -37,6 +37,8 @@ public class CartService
 								.category(productClient.oneProduct(d.getProductId())
 										.getCategory())
 								.quantity(d.getQuantity())
+								.imageUrl(productClient.oneProduct(d.getProductId())
+										.getImageUrl())
 								.build())
 						.collect(Collectors.toList()))
 				.build();
@@ -79,15 +81,14 @@ public class CartService
 		{
 			CartItem cartItem = cartItemRepository.findByUserIdAndProductId(userId, productId)
 					.get();
-			if(cartItem.getQuantity() > 1)
+			if (cartItem.getQuantity() > 1)
 			{
 				cartItem.setQuantity(cartItem.getQuantity() - 1);
 				cartItemRepository.save(cartItem);
-			}
-			else {
+			} else
+			{
 				cartItemRepository.delete(cartItem);
 			}
-
 
 		}
 		return cartRepository.findById(userId)
